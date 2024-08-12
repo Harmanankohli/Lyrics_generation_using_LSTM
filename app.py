@@ -103,7 +103,7 @@ def generate_chars(input, length):
 # streamlit app
 st.title("Lyrics Prediction With LSTM")
 st.write("Note: Please keep in mind that the lyrics sometimes will not make any sense as the LSTM is trained on characters rather than words")
-input_text=st.text_input("Enter the sequence of characters of atleast 50 characters","thought i 'd end up with sean but")
+input_text=st.text_input("Enter the sequence of characters of atleast 50 characters","I call you when I need you, my heart's on fire You come to me, come to me")
 lyrics_char_length = st.text_input("Enter the number of characters you want as output",500)
 if st.button("Predict Lyrics"):
     if len(input_text) >= 50: # lyrics should be of atleast 50 character length
