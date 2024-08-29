@@ -1,5 +1,6 @@
 import streamlit as st
 import re
+import random
 import numpy as np
 import pickle
 from keras.models import load_model
@@ -100,21 +101,27 @@ def generate_chars(input, length):
   except:
     return "An error occured. Please try with another song"
 
+spinner_messages = [
+        "Maybe it's worth a million unicorns? Just kidding about the unicorns. (Unless...?) 🤸",
+        "Hang tight! We're working faster than a squirrel with a nut stash full of caffeine. 🤸",
+        "Coffee break? Nah, gotta get this done for you, champ! 🤸"]
+
 # streamlit app
 st.title("Lyrics Generation With LSTM")
 st.write("Note: Please keep in mind that the lyrics sometimes will not make any sense as the LSTM is trained on characters rather than words")
 input_text=st.text_input("Enter the sequence of characters of atleast 50 characters","I call you when I need you, my heart's on fire You come to me, come to me")
 lyrics_char_length = st.text_input("Enter the number of characters you want as output",50)
 if st.button("Predict Lyrics"):
-    if len(input_text) >= 50: # lyrics should be of atleast 50 character length
-        output = generate_chars(input_text,int(lyrics_char_length))
-        if "error" in output:
-            st.error("An error occured. Please try with another song lyrics",icon="🚨")
+    with st.spinner(text=random.choice(spinner_messages)):
+        if len(input_text) >= 50: # lyrics should be of atleast 50 character length
+            output = generate_chars(input_text,int(lyrics_char_length))
+            if "error" in output:
+                st.error("An error occured. Please try with another song lyrics",icon="🚨")
+            else:
+                lyrics = ""
+                for i in output:
+                    lyrics+=i
+                st.write(f'Lyrics: {lyrics}')
         else:
-            lyrics = ""
-            for i in output:
-                lyrics+=i
-            st.write(f'Lyrics: {lyrics}')
-    else:
-        st.error('Please make sure that the entered lyrics has atleast 50 characters', icon="🚨")
-        
+            st.error('Please make sure that the entered lyrics has atleast 50 characters', icon="🚨")
+            
