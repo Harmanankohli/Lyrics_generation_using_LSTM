@@ -16,7 +16,7 @@ This project demonstrates the use of a character-based **LSTM (Long Short-Term M
 - **Regex:** For text preprocessing.  
 
 ## 📂 Project Structure  
-.
+
 ├── model.h5                # Trained LSTM model  
 ├── vocab.pkl               # Pickled vocabulary file  
 ├── app.py                  # Main Streamlit application  
