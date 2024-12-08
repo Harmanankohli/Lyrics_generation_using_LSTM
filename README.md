@@ -1,7 +1,3 @@
-Here's a README for your project:  
-
----
-
 # 🎵 Lyrics Generation with LSTM  
 
 This project demonstrates the use of a character-based **LSTM (Long Short-Term Memory)** model for generating song lyrics. The trained model generates lyrics based on a sequence of characters provided by the user. A **Streamlit** web application is included to make the model interactive and user-friendly.  
